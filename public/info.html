@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Management System - Info</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: #ffffff;
+      padding: 35px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    h1 {
+      color: #1e3a8a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+      margin-top: 0;
+    }
+    h2 {
+      color: #2563eb;
+      margin-top: 25px;
+      font-size: 1.25rem;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #1e293b;
+    }
+    .method-get { color: #15803d; font-weight: bold; }
+    .method-post { color: #b45309; font-weight: bold; }
+    .method-put { color: #1d4ed8; font-weight: bold; }
+    .method-delete { color: #b91c1c; font-weight: bold; }
+    footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Vehicle Management System</h1>
+    <p>
+      Welcome to the <strong>Vehicle Management Web Application</strong>. This project maintains vehicle records and demonstrates the core capabilities of <strong>Node.js</strong> and <strong>Express.js</strong>.
+    </p>
+
+    <h2>Technology Stack</h2>
+    <div>
+      <span class="badge">Node.js</span>
+      <span class="badge">HTTP Module</span>
+      <span class="badge">FS Module</span>
+      <span class="badge">Express.js</span>
+      <span class="badge">RESTful APIs</span>
+    </div>
+
+    <h2>Architecture Overview</h2>
+    <p>The application is modularized into two distinct server components:</p>
+    <ul>
+      <li><strong>Part A (HTTP Server):</strong> Runs on port <code>3000</code> using Node's core <code>http</code> and <code>fs</code> modules. Handles static file delivery, basic routing, and POST payload buffering without external frameworks.</li>
+      <li><strong>Part B (Express REST API):</strong> Runs on port <code>4000</code> using <code>express.js</code> to provide complete CRUD endpoints (GET, POST, PUT, DELETE) with JSON request parsing and robust validation.</li>
+    </ul>
+
+    <h2>Server Endpoints</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Server</th>
+          <th>Method</th>
+          <th>Endpoint</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HTTP (3000)</td>
+          <td><span class="method-get">GET</span></td>
+          <td>/</td>
+          <td>HTML Welcome Page</td>
+        </tr>
+        <tr>
+          <td>HTTP (3000)</td>
+          <td><span class="method-get">GET</span></td>
+          <td>/vehicles</td>
+          <td>List all vehicle records (JSON)</td>
+        </tr>
+        <tr>
+          <td>HTTP (3000)</td>
+          <td><span class="method-get">GET</span></td>
+          <td>/about</td>
+          <td>Application Information</td>
+        </tr>
+        <tr>
+          <td>HTTP (3000)</td>
+          <td><span class="method-get">GET</span></td>
+          <td>/info</td>
+          <td>Static HTML page served via FS module</td>
+        </tr>
+        <tr>
+          <td>HTTP (3000)</td>
+          <td><span class="method-post">POST</span></td>
+          <td>/add-vehicle</td>
+          <td>Add a new vehicle record</td>
+        </tr>
+        <tr>
+          <td>Express (4000)</td>
+          <td><span class="method-get">GET</span></td>
+          <td>/vehicles</td>
+          <td>Retrieve all vehicle records</td>
+        </tr>
+        <tr>
+          <td>Express (4000)</td>
+          <td><span class="method-get">GET</span></td>
+          <td>/vehicles/:id</td>
+          <td>Retrieve specific vehicle by ID</td>
+        </tr>
+        <tr>
+          <td>Express (4000)</td>
+          <td><span class="method-post">POST</span></td>
+          <td>/vehicles</td>
+          <td>Create a new vehicle record</td>
+        </tr>
+        <tr>
+          <td>Express (4000)</td>
+          <td><span class="method-put">PUT</span></td>
+          <td>/vehicles/:id</td>
+          <td>Update an existing vehicle</td>
+        </tr>
+        <tr>
+          <td>Express (4000)</td>
+          <td><span class="method-delete">DELETE</span></td>
+          <td>/vehicles/:id</td>
+          <td>Delete a vehicle record</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <footer>
+      Full Stack Development &bull; Node.js Lab Examination &bull; MT1-LABEXAM
+    </footer>
+  </div>
+</body>
+</html>
