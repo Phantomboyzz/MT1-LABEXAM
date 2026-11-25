@@ -34,10 +34,13 @@ let vehicles = [
 
 // Create HTTP Server
 const server = http.createServer((req, res) => {
-  const { method, url } = req;
+  const { method } = req;
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost:3000'}`);
+  // Normalize pathname to strip trailing slash (except root '/')
+  const pathname = parsedUrl.pathname.length > 1 ? parsedUrl.pathname.replace(/\/+$/, '') : parsedUrl.pathname;
 
   // Route: GET /
-  if (method === 'GET' && url === '/') {
+  if (method === 'GET' && pathname === '/') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(`
       <!DOCTYPE html>
@@ -72,13 +75,13 @@ const server = http.createServer((req, res) => {
   }
 
   // Route: GET /vehicles
-  else if (method === 'GET' && url === '/vehicles') {
+  else if (method === 'GET' && pathname === '/vehicles') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(vehicles, null, 2));
   }
 
   // Route: GET /about
-  else if (method === 'GET' && url === '/about') {
+  else if (method === 'GET' && pathname === '/about') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(`
       <!DOCTYPE html>
@@ -106,7 +109,7 @@ const server = http.createServer((req, res) => {
   }
 
   // Route: GET /info (Static File Serving using FS Module)
-  else if (method === 'GET' && url === '/info') {
+  else if (method === 'GET' && pathname === '/info') {
     const filePath = path.join(__dirname, 'public', 'info.html');
 
     fs.readFile(filePath, 'utf-8', (err, data) => {
@@ -121,7 +124,7 @@ const server = http.createServer((req, res) => {
   }
 
   // Route: POST /add-vehicle
-  else if (method === 'POST' && url === '/add-vehicle') {
+  else if (method === 'POST' && pathname === '/add-vehicle') {
     let body = '';
 
     // Receive incoming data chunks

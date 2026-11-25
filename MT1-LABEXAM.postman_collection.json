@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "MT1-LABEXAM Vehicle Management API",
+		"description": "Collection of API requests for MT1-LABEXAM Vehicle Management Web Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. GET All Vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"vehicles"
+					]
+				},
+				"description": "Retrieve all vehicle records"
+			},
+			"response": []
+		},
+		{
+			"name": "2. GET Vehicle by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/vehicles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"vehicles",
+						"1"
+					]
+				},
+				"description": "Retrieve a specific vehicle by its ID (e.g., ID 1)"
+			},
+			"response": []
+		},
+		{
+			"name": "3. POST Add New Vehicle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 4,\n  \"vehicleName\": \"Maruti Swift\",\n  \"vehicleNumber\": \"DL8CAF5030\",\n  \"type\": \"Hatchback\",\n  \"price\": 750000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"vehicles"
+					]
+				},
+				"description": "Add a new vehicle record"
+			},
+			"response": []
+		},
+		{
+			"name": "4. PUT Update Vehicle Details",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"vehicleName\": \"Hyundai Creta SX\",\n  \"price\": 1600000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/vehicles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"vehicles",
+						"1"
+					]
+				},
+				"description": "Update details of vehicle with ID 1"
+			},
+			"response": []
+		},
+		{
+			"name": "5. DELETE Vehicle by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/vehicles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"vehicles",
+						"1"
+					]
+				},
+				"description": "Delete vehicle record with ID 1"
+			},
+			"response": []
+		},
+		{
+			"name": "HTTP Server - GET /info (Port 3000)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/info",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"info"
+					]
+				},
+				"description": "Serve static file public/info.html using Node.js FS module"
+			},
+			"response": []
+		}
+	]
+}
